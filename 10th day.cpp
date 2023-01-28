@@ -47,3 +47,27 @@ public:
         // 10 % 5 => 0 
     }
 };
+                           // adding emotional promity
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long 
+
+void solve()
+{
+        double p,x,y,z;
+	    cin>>p>>x>>y>>z;
+	    if(z==1)cout<<fixed<<setprecision(10)<<p+((p/100)*y)<<'\n';
+	    else cout<<fixed<<setprecision(10)<<p-((p/100)*x)<<'\n';
+	return  ;
+}
+int main()
+{
+	ll t;
+	cin >> t;
+	while(t--)
+	{
+		solve();
+	}
+	return 0 ;
+}
