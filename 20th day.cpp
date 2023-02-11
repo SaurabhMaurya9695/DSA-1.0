@@ -63,4 +63,61 @@ public:
         return (ans == INT_MAX) ? 0 : ans ;
     }
 };
-                                          //
+                                          //maxsize subarray <= k
+class Solution{
+	public:
+	#define ll long long
+	int findMaxSubarraySum(ll arr[], ll n, ll k)
+	{
+        ll i = 0 , j = 0 ;
+        ll ans = INT_MIN;
+        ll sum = 0 ;
+        while(j < n){
+            sum += arr[j] ;
+            if(sum > k){
+                while(sum > k)
+                {
+                    sum -= arr[i];
+                    i++;
+                }
+                if(sum <=k){
+                    ans = max(ans , sum );
+                }
+                j ++ ;
+            }
+            else if (sum <= k){
+                ans =max(ans , sum);
+                j++;
+            }
+        }
+        return (ans == INT_MIN) ? 0 : ans ;
+	}  
+
+		 
+
+};
+
+                                            //count subarray
+//explanation -> subtract only those subarray whose value is <=k from totalsubarray
+
+class Solution{
+public:
+	#define ll long long
+
+	ll countSubarray(int arr[], int n, int k) {
+	    // code here
+	    ll ans=0;
+	    ll cnt=0;
+	    for(int i=0; i<n; i++){
+	        if(arr[i] <= k)
+	            cnt++;
+	        else{
+	            ans += cnt*(cnt+1)/2;
+	            cnt = 0;
+	        }
+	    }
+	    ans += cnt*(cnt+1)/2;
+	    ans = (ll)n*(n+1)/2 - ans;
+	    return ans;
+	}
+};
